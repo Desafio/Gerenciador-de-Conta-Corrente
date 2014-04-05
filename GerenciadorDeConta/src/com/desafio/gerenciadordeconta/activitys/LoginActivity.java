@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.gerenciadordeconta.R;
-import com.example.gerenciadordeconta.fragments.LoginFragment;
+import com.desafio.gerenciadordeconta.fragments.LoginFragment;
 
 public class LoginActivity extends ActionBarActivity {
 
@@ -23,7 +23,7 @@ public class LoginActivity extends ActionBarActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.login, menu);
+		getMenuInflater().inflate(R.menu.global, menu);
 		return true;
 	}
 

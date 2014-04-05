@@ -1,4 +1,4 @@
-package com.example.gerenciadordeconta.fragments;
+package com.desafio.gerenciadordeconta.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.desafio.gerenciadordeconta.activitys.HomeActivity;
 import com.example.gerenciadordeconta.R;
+import com.desafio.gerenciadordeconta.activitys.HomeActivity;
 
 public class HomeFragment extends Fragment {
 	

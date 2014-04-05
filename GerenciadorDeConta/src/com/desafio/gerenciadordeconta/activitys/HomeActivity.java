@@ -9,8 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.gerenciadordeconta.R;
-import com.example.gerenciadordeconta.fragments.NavigationDrawerFragment;
-import com.example.gerenciadordeconta.fragments.HomeFragment;
+import com.desafio.gerenciadordeconta.fragments.HomeFragment;
+import com.desafio.gerenciadordeconta.fragments.NavigationDrawerFragment;
 
 public class HomeActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -77,7 +77,7 @@ public class HomeActivity extends ActionBarActivity
             // Only show items in the action bar relevant to this screen
             // if the drawer is not showing. Otherwise, let the drawer
             // decide what to show in the action bar.
-            getMenuInflater().inflate(R.menu.home, menu);
+            getMenuInflater().inflate(R.menu.global, menu);
             restoreActionBar();
             return true;
         }
