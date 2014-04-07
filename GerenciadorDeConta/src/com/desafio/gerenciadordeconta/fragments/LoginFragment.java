@@ -5,7 +5,6 @@ import java.util.List;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +41,7 @@ public class LoginFragment extends Fragment {
             	
             	if(list.size() == 1){
             		Intent intent = new Intent(getActivity(), HomeActivity.class);
+            		intent.putExtra("conta", list.get(0).getConta());
                 	getActivity().startActivity(intent);
             	}
             }

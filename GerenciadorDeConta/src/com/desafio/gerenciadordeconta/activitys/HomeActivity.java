@@ -8,9 +8,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.gerenciadordeconta.R;
 import com.desafio.gerenciadordeconta.fragments.HomeFragment;
 import com.desafio.gerenciadordeconta.fragments.NavigationDrawerFragment;
+import com.example.gerenciadordeconta.R;
 
 public class HomeActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -18,6 +18,8 @@ public class HomeActivity extends ActionBarActivity
     private NavigationDrawerFragment mNavigationDrawerFragment;
 
     private CharSequence mTitle;
+    
+    String conta = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,9 @@ public class HomeActivity extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+        
+        conta = getIntent().getStringExtra("conta");
+        
     }
 
     @Override
