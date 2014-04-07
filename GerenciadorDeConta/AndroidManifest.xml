@@ -9,14 +9,14 @@
         android:targetSdkVersion="16" />
 
     <application
-        android:name="br.com.infoglobo.extranoticias.GerenciadorDeContaApplication"
+        android:name="com.desafio.gerenciadordeconta.GerenciadorDeContaApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.desafio.gerenciadordeconta.activitys.LoginActivity"
-            android:label="@string/title_activity_login" >
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

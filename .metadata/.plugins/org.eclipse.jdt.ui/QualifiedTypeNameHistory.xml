@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.example.gerenciadordeconta.fragments.PlaceholderFragment"/>
+<fullyQualifiedTypeName name="com.example.gerenciadordeconta.fragments.LoginFragment"/>
+<fullyQualifiedTypeName name="com.example.gerenciadordeconta.R"/>
+<fullyQualifiedTypeName name="com.desafio.gerenciadordeconta.activitys.HomeActivity"/>
+<fullyQualifiedTypeName name="android.app.Application"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="android.widget.EditText"/>
+<fullyQualifiedTypeName name="com.desafio.gerenciadordeconta.models.ContaCorrente"/>
+</qualifiedTypeNameHistroy>

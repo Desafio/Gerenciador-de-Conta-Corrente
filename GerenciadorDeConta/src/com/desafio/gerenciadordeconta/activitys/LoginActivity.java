@@ -5,8 +5,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.gerenciadordeconta.R;
+import com.activeandroid.query.Delete;
 import com.desafio.gerenciadordeconta.fragments.LoginFragment;
+import com.desafio.gerenciadordeconta.models.ContaCorrente;
+import com.example.gerenciadordeconta.R;
 
 public class LoginActivity extends ActionBarActivity {
 
@@ -19,6 +21,28 @@ public class LoginActivity extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new LoginFragment()).commit();
 		}
+
+		criarContaCorrente();
+	}
+
+	private void criarContaCorrente() {
+		new Delete().from(ContaCorrente.class).execute();
+
+		ContaCorrente contaCorrente1 = new ContaCorrente();
+		contaCorrente1.setConta("11111");
+		contaCorrente1.setNome("David");
+		contaCorrente1.setSaldo(1000.0F);
+		contaCorrente1.setSenha("1111");
+		contaCorrente1.setVIP(true);
+		contaCorrente1.save();
+		
+		ContaCorrente contaCorrente2 = new ContaCorrente();
+		contaCorrente2.setConta("22222");
+		contaCorrente2.setNome("Daniel");
+		contaCorrente2.setSaldo(500.0F);
+		contaCorrente2.setSenha("2222");
+		contaCorrente2.setVIP(false);
+		contaCorrente2.save();
 	}
 
 	@Override
