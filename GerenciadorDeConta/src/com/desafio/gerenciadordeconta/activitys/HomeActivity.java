@@ -62,16 +62,16 @@ public class HomeActivity extends ActionBarActivity
                 mTitle = getString(R.string.title_saque);                        
                 break;
             case 4:
-                getString(R.string.title_deposito);
+            	mTitle = getString(R.string.title_deposito);
                 break;
             case 5:
-                getString(R.string.title_transferencia);
+            	mTitle = getString(R.string.title_transferencia);
                 break;
             case 6:
-                getString(R.string.title_gerente);
+            	mTitle = getString(R.string.title_gerente);
                 break;
             case 7:
-                getString(R.string.title_sair);
+            	mTitle = getString(R.string.title_sair);
                 break;
         }
     }
