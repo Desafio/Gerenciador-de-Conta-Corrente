@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import com.desafio.gerenciadordeconta.fragments.HomeFragment;
 import com.desafio.gerenciadordeconta.fragments.NavigationDrawerFragment;
+import com.desafio.gerenciadordeconta.fragments.SaldoFragment;
 import com.desafio.gerenciadordeconta.fragments.SaqueFragment;
 import com.example.gerenciadordeconta.R;
 
@@ -45,6 +46,11 @@ public class HomeActivity extends ActionBarActivity implements
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		position++;
 		switch (position) {
+		case 1:
+			fragmentManager.beginTransaction()
+					.replace(R.id.container, SaldoFragment.newInstance())
+					.commit();
+			break;
 		case 3:
 			fragmentManager.beginTransaction()
 					.replace(R.id.container, SaqueFragment.newInstance())

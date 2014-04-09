@@ -9,25 +9,24 @@ import android.widget.TextView;
 
 import com.example.gerenciadordeconta.R;
 
-public class SaqueFragment extends Fragment {
+public class SaldoFragment extends Fragment {
 	
 	String conta = "";
 	
-	public static SaqueFragment newInstance() {
-		SaqueFragment fragment = new SaqueFragment();
+	public static SaldoFragment newInstance() {
+		SaldoFragment fragment = new SaldoFragment();
         return fragment;
     }
 	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_saque, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_saldo, container, false);
         conta = getActivity().getIntent().getStringExtra("conta");
         
         TextView text = (TextView) rootView.findViewById(R.id.section_label);
-        text.setText(conta + " - Saque");
+        text.setText(conta + " - Saldo");
         return rootView;
 	}
-      
 
 }
