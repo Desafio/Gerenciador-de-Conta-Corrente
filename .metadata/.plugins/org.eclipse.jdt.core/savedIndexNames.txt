@@ -1,8 +1,4 @@
-INDEX VERSION 1.126+C:\Users\David\Documents\GitHub\Gerenciador-de-Conta-Corrente\.metadata\.plugins\org.eclipse.jdt.core
-3819385231.index
-1403366445.index
-1284074322.index
-1408918789.index
-1781811831.index
-401092564.index
-3918566289.index
+INDEX VERSION 1.126+/Users/davidoffrede/Documents/Git/Gerenciador-de-Conta-Corrente/.metadata/.plugins/org.eclipse.jdt.core
+1270315800.index
+3136983746.index
+3086750290.index
