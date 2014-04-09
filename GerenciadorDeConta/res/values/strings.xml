@@ -22,5 +22,8 @@
     <string name="sair_confirmar">Sim (Sair)</string>
     <string name="gerente_mensagem">Deseja agendar uma visita do seu gerente, será cobrada uma taxa de 50,00 R$ pelo serviço</string>
     <string name="gerente_confirmar">Sim (Agendar)</string>
+    <string name="saldo_mensagem">Seu saldo é de:</string>
+    <string name="saque_mensagem">Digite o valor que deseja sacar:</string>
+    <string name="saque_confirmar">Sacar</string>
 
 </resources>

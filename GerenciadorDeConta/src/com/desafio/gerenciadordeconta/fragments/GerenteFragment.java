@@ -38,7 +38,7 @@ public class GerenteFragment extends Fragment {
 				transferencia.setConta(contaCorrente.getConta());
 				transferencia.setData(currentDate.getTime());
 				transferencia.setDescricao("Visita Gerente");
-				transferencia.setValor(50.00F);
+				transferencia.setValor(-50.00F);
 				transferencia.save();
 				Toast.makeText(getActivity(), "Agendamento feito com sucesso.", Toast.LENGTH_LONG).show();
 			}

@@ -25,8 +25,8 @@ public class SaldoFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_saldo, container, false);
         contaCorrente = (ContaCorrente) getActivity().getIntent().getSerializableExtra("conta");
         
-        TextView text = (TextView) rootView.findViewById(R.id.section_label);
-        text.setText(contaCorrente.getConta() + " - Saldo");
+        TextView text = (TextView) rootView.findViewById(R.id.valor_saldo);
+        text.setText(contaCorrente.getSaldo());
         return rootView;
 	}
 
