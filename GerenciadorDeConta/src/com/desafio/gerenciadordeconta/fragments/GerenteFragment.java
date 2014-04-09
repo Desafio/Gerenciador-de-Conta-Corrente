@@ -33,6 +33,12 @@ public class GerenteFragment extends Fragment {
 				.findViewById(R.id.button_sair);
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
+				
+				if(contaCorrente.getSaldo() < 50.0F) {
+					Toast.makeText(getActivity(), "Seu saldo Ž insuficiente para esta a‹o.", Toast.LENGTH_LONG).show();
+					return;
+				}
+				
 				Calendar currentDate = Calendar.getInstance();
 				Transferencia transferencia = new Transferencia();
 				transferencia.setConta(contaCorrente.getConta());

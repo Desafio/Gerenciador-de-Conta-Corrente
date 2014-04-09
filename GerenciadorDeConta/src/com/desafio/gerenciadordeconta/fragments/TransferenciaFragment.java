@@ -49,12 +49,17 @@ public class TransferenciaFragment extends Fragment {
 				.where("conta = ?", stringConta).execute();
 				
 				if(stringConta.equalsIgnoreCase(contaCorrente.getConta()) || list == null || list.size() != 1) {
-					Toast.makeText(getActivity(), "Conta inválida.", Toast.LENGTH_LONG).show();
+					Toast.makeText(getActivity(), "Conta inv‡lida.", Toast.LENGTH_LONG).show();
 					return;
 				}
 				
 				if(stringValor == null || stringValor.length() == 0 || Integer.parseInt(stringValor) < 0) {
-					Toast.makeText(getActivity(), "Valor inválido.", Toast.LENGTH_LONG).show();
+					Toast.makeText(getActivity(), "Valor inv‡lido.", Toast.LENGTH_LONG).show();
+					return;
+				}
+				
+				if(contaCorrente.getSaldo() < Float.valueOf(stringValor)) {
+					Toast.makeText(getActivity(), "Seu saldo Ž insuficiente para esta transferncia.", Toast.LENGTH_LONG).show();
 					return;
 				}
 				
@@ -73,7 +78,7 @@ public class TransferenciaFragment extends Fragment {
 				transferenciaDeposito.setValor(Float.valueOf(stringValor));
 				transferenciaDeposito.save();
 				
-				Toast.makeText(getActivity(), "Transferência realizado com sucesso.", Toast.LENGTH_LONG).show();
+				Toast.makeText(getActivity(), "Transferncia realizado com sucesso.", Toast.LENGTH_LONG).show();
 			}
 		});
         return rootView;

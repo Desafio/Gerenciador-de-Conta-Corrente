@@ -44,6 +44,13 @@ public class SaqueFragment extends Fragment {
 					return;
 				}
 				
+				if(contaCorrente.getSaldo() < Float.valueOf(valor)) {
+					Toast.makeText(getActivity(), "Seu saldo Ž insuficiente para este saque.", Toast.LENGTH_LONG).show();
+					return;
+				}
+				
+				contaCorrente.setSaldo(contaCorrente.getSaldo() - Float.valueOf(valor));
+				
 				Calendar currentDate = Calendar.getInstance();
 				Transferencia transferencia = new Transferencia();
 				transferencia.setConta(contaCorrente.getConta());

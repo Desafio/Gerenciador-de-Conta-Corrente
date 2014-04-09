@@ -44,6 +44,8 @@ public class DepositoFragment extends Fragment {
 					return;
 				}
 				
+				contaCorrente.setSaldo(contaCorrente.getSaldo() + Float.valueOf(valor));
+				
 				Calendar currentDate = Calendar.getInstance();
 				Transferencia transferencia = new Transferencia();
 				transferencia.setConta(contaCorrente.getConta());
