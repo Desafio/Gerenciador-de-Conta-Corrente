@@ -26,7 +26,7 @@ public class SaldoFragment extends Fragment {
         contaCorrente = (ContaCorrente) getActivity().getIntent().getSerializableExtra("conta");
         
         TextView text = (TextView) rootView.findViewById(R.id.valor_saldo);
-        text.setText(contaCorrente.getSaldo());
+        text.setText(contaCorrente.getSaldo() + " R$");
         return rootView;
 	}
 
