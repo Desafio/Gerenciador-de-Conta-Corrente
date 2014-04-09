@@ -20,5 +20,7 @@
     <string name="login_entrar">Entrar</string>
     <string name="sair_mensagem">Deseja sair?</string>
     <string name="sair_confirmar">Sim (Sair)</string>
+    <string name="gerente_mensagem">Deseja agendar uma visita do seu gerente, será cobrada uma taxa de 50,00 R$ pelo serviço</string>
+    <string name="gerente_confirmar">Sim (Agendar)</string>
 
 </resources>

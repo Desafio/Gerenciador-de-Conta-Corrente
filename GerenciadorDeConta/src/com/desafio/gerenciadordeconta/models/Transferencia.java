@@ -8,7 +8,7 @@ import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 
 @Table(name = "Transferencia")
-public class Transferencias extends Model {
+public class Transferencia extends Model {
 
 	@Column(name = "conta")
 	private String conta;
@@ -17,12 +17,12 @@ public class Transferencias extends Model {
 	private String data;
 
 	@Column(name = "valor")
-	private int valor;
+	private float valor;
 
 	@Column(name = "descricao")
 	private String descricao;
 	
-	public Transferencias(){
+	public Transferencia(){
 	}
 	
 	public void setData(Date data) {
@@ -34,11 +34,11 @@ public class Transferencias extends Model {
 		return data;
 	}
 	
-	public void setValor(int valor) {
+	public void setValor(float valor) {
 		this.valor = valor;
 	}
 	
-	public int getValor() {
+	public float getValor() {
 		return valor;
 	}
 	
