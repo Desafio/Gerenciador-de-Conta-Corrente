@@ -11,8 +11,8 @@ import android.view.MenuItem;
 import com.desafio.gerenciadordeconta.fragments.DepositoFragment;
 import com.desafio.gerenciadordeconta.fragments.ExtratoFragment;
 import com.desafio.gerenciadordeconta.fragments.GerenteFragment;
-import com.desafio.gerenciadordeconta.fragments.HomeFragment;
 import com.desafio.gerenciadordeconta.fragments.NavigationDrawerFragment;
+import com.desafio.gerenciadordeconta.fragments.SairFragment;
 import com.desafio.gerenciadordeconta.fragments.SaldoFragment;
 import com.desafio.gerenciadordeconta.fragments.SaqueFragment;
 import com.desafio.gerenciadordeconta.fragments.TransferenciaFragment;
@@ -80,11 +80,10 @@ public class HomeActivity extends ActionBarActivity implements
 					.replace(R.id.container, GerenteFragment.newInstance())
 					.commit();
 			break;
-		default:
-			fragmentManager
-					.beginTransaction()
-					.replace(R.id.container,
-							HomeFragment.newInstance(position)).commit();
+		case 7:
+			fragmentManager.beginTransaction()
+					.replace(R.id.container, SairFragment.newInstance())
+					.commit();
 			break;
 		}
 	}
