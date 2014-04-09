@@ -22,32 +22,31 @@ public class ContaCorrente extends Model implements Serializable {
 
 	@Column(name = "VIP")
 	private Boolean VIP;
-	
+
 	public ContaCorrente() {
 	}
-	
+
 	public void setConta(String conta) {
 		this.conta = conta;
 	}
-	
+
 	public String getConta() {
 		return conta;
 	}
-	
+
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+
 	public String getSenha() {
 		return senha;
 	}
-	
+
 	public void setVIP(Boolean VIP) {
 		this.VIP = VIP;
 	}
-	
+
 	public Boolean getVIP() {
 		return VIP;
 	}
-
 }

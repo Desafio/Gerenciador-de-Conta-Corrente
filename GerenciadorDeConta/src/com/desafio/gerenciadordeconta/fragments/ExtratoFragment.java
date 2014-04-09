@@ -1,13 +1,18 @@
 package com.desafio.gerenciadordeconta.fragments;
 
+import java.util.List;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ListView;
 
+import com.activeandroid.query.Select;
+import com.desafio.gerenciadordeconta.adapters.ExtratoAdapter;
 import com.desafio.gerenciadordeconta.models.ContaCorrente;
+import com.desafio.gerenciadordeconta.models.Transferencia;
 import com.example.gerenciadordeconta.R;
 
 public class ExtratoFragment extends Fragment {
@@ -23,10 +28,16 @@ public class ExtratoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_extrato, container, false);
+        ListView listView = (ListView) rootView.findViewById(R.id.listView);
+        
         contaCorrente = (ContaCorrente) getActivity().getIntent().getSerializableExtra("conta");
         
-        TextView text = (TextView) rootView.findViewById(R.id.section_label);
-        text.setText(contaCorrente.getConta() + " - Extrato");
+        List<Transferencia> extratoList = new Select().from(Transferencia.class)
+				.where("conta = ?", contaCorrente.getConta()).orderBy("data").execute();
+        
+        ExtratoAdapter extratoAdapter = new ExtratoAdapter(getActivity(), extratoList);
+        listView.setAdapter(extratoAdapter);
+        
         return rootView;
 	}
 
