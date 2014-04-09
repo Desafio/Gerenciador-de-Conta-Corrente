@@ -10,44 +10,37 @@
 
     <LinearLayout
         android:id="@+id/linearLog"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:orientation="vertical"
         android:paddingLeft="5dp"
         android:paddingRight="5dp" >
 
-        <RelativeLayout
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal" >
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/saque_mensagem"
+            android:textSize="16sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/saque_mensagem"
-                android:textSize="16sp" />
+        <EditText
+            android:id="@+id/saque_valor"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:inputType="text" >
 
-            <EditText
-                android:id="@+id/saque_valor"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:inputType="text" >
+            <requestFocus />
+        </EditText>
 
-                <requestFocus />
-            </EditText>
-        </RelativeLayout>
+        <Button
+            android:id="@+id/button_sacar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="@string/saque_confirmar" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/button_sacar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linearLog"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="@string/saque_confirmar" />
 
 </RelativeLayout>

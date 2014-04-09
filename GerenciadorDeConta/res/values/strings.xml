@@ -25,5 +25,7 @@
     <string name="saldo_mensagem">Seu saldo é de:</string>
     <string name="saque_mensagem">Digite o valor que deseja sacar:</string>
     <string name="saque_confirmar">Sacar</string>
+    <string name="deposito_mensagem">Digite o valor que deseja depositar:</string>
+    <string name="deposito_confirmar">Depositar</string>
 
 </resources>
