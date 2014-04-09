@@ -3,6 +3,7 @@ package com.desafio.gerenciadordeconta.models;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
 
 @Table(name = "correntista")
 public class ContaCorrente extends Model {
@@ -10,19 +11,21 @@ public class ContaCorrente extends Model {
 	@Column(name = "conta")
 	private String conta;
 
-	@Column(name = "nome")
-	private String nome;
-
 	@Column(name = "senha")
 	private String senha;
 
 	@Column(name = "VIP")
 	private Boolean VIP;
-
-	@Column(name = "saldo")
-	private float saldo;
 	
 	public ContaCorrente() {
+	}
+	
+	public ContaCorrente(String conta) {
+		 ContaCorrente contaCorrente = (ContaCorrente) new Select().from(ContaCorrente.class).where("conta = ?",conta).execute().get(0);
+		 
+		 this.conta = contaCorrente.conta;
+		 this.senha = contaCorrente.senha;
+		 this.VIP = contaCorrente.VIP;
 	}
 	
 	public void setConta(String conta) {
@@ -31,14 +34,6 @@ public class ContaCorrente extends Model {
 	
 	public String getConta() {
 		return conta;
-	}
-	
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
-	public String getNome() {
-		return nome;
 	}
 	
 	public void setSenha(String senha) {
@@ -55,14 +50,6 @@ public class ContaCorrente extends Model {
 	
 	public Boolean getVIP() {
 		return VIP;
-	}
-	
-	public void setSaldo(float saldo) {
-		this.saldo = saldo;
-	}
-	
-	public float getSaldo() {
-		return saldo;
 	}
 
 }
