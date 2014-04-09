@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.desafio.gerenciadordeconta.fragments.DepositoFragment;
 import com.desafio.gerenciadordeconta.fragments.ExtratoFragment;
 import com.desafio.gerenciadordeconta.fragments.HomeFragment;
 import com.desafio.gerenciadordeconta.fragments.NavigationDrawerFragment;
@@ -60,6 +61,11 @@ public class HomeActivity extends ActionBarActivity implements
 		case 3:
 			fragmentManager.beginTransaction()
 					.replace(R.id.container, SaqueFragment.newInstance())
+					.commit();
+			break;
+		case 4:
+			fragmentManager.beginTransaction()
+					.replace(R.id.container, DepositoFragment.newInstance())
 					.commit();
 			break;
 		default:
