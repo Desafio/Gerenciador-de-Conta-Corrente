@@ -27,5 +27,8 @@
     <string name="saque_confirmar">Sacar</string>
     <string name="deposito_mensagem">Digite o valor que deseja depositar:</string>
     <string name="deposito_confirmar">Depositar</string>
+    <string name="transferencia_valor">Valor da transferência:</string>
+    <string name="transferencia_conta">Conta para transferir:</string>
+    <string name="transferencia_confirmar">Transferir</string>
 
 </resources>
