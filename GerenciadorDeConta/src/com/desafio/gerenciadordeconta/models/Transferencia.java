@@ -38,8 +38,8 @@ public class Transferencia extends Model {
 		this.valor = valor;
 	}
 	
-	public float getValor() {
-		return valor;
+	public String getValor() {
+		return getValorFormatado();
 	}
 	
 	public void setDescricao(String descricao) {
@@ -52,5 +52,12 @@ public class Transferencia extends Model {
 	
 	public void setConta(String conta) {
 		this.conta = conta;
+	}
+	
+	private String getValorFormatado() {
+		if(this.valor >= 0){
+			return Float.toString(this.valor);
+		}
+		return "(" + (this.valor * - 1) + ")";
 	}
 }

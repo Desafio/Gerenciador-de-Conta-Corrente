@@ -80,7 +80,7 @@ public class ExtratoAdapter extends ArrayAdapter<Transferencia> {
 		public void setTransferencia(Transferencia transferencia) {
 			this.data.setText(transferencia.getData());
 			this.descricao.setText(transferencia.getDescricao());
-			this.valor.setText(Float.toString(transferencia.getValor()));
+			this.valor.setText(transferencia.getValor());
 		}
 	}
 
