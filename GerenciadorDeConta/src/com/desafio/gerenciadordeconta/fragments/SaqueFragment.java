@@ -38,6 +38,12 @@ public class SaqueFragment extends Fragment {
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				String valor = loginSenha.getText().toString();
+				
+				if(valor.length() == 0 || Float.valueOf(valor) <= 0) {
+					Toast.makeText(getActivity(), "Valor inv‡lido", Toast.LENGTH_LONG).show();
+					return;
+				}
+				
 				Calendar currentDate = Calendar.getInstance();
 				Transferencia transferencia = new Transferencia();
 				transferencia.setConta(contaCorrente.getConta());

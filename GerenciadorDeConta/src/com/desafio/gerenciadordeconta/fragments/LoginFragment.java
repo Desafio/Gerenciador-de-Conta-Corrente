@@ -46,7 +46,7 @@ public class LoginFragment extends Fragment {
 								stringSenha).execute();
 
 				if (list == null || list.size() != 1) {
-					Toast.makeText(getActivity(), "Conta ou Senha inválida.", Toast.LENGTH_LONG).show();
+					Toast.makeText(getActivity(), "Conta ou Senha inv‡lida.", Toast.LENGTH_LONG).show();
 					return;
 				}
 				Bundle extras = new Bundle();

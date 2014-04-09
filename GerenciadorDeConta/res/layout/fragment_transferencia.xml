@@ -30,7 +30,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:inputType="text" >
+                android:inputType="numberDecimal" >
 
                 <requestFocus />
             </EditText>
