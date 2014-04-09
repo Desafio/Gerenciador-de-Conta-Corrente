@@ -14,6 +14,7 @@ import com.desafio.gerenciadordeconta.fragments.HomeFragment;
 import com.desafio.gerenciadordeconta.fragments.NavigationDrawerFragment;
 import com.desafio.gerenciadordeconta.fragments.SaldoFragment;
 import com.desafio.gerenciadordeconta.fragments.SaqueFragment;
+import com.desafio.gerenciadordeconta.fragments.TransferenciaFragment;
 import com.example.gerenciadordeconta.R;
 
 public class HomeActivity extends ActionBarActivity implements
@@ -66,6 +67,11 @@ public class HomeActivity extends ActionBarActivity implements
 		case 4:
 			fragmentManager.beginTransaction()
 					.replace(R.id.container, DepositoFragment.newInstance())
+					.commit();
+			break;
+		case 5:
+			fragmentManager.beginTransaction()
+					.replace(R.id.container, TransferenciaFragment.newInstance())
 					.commit();
 			break;
 		default:
