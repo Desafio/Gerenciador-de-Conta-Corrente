@@ -1,10 +1,13 @@
 package com.desafio.gerenciadordeconta.activitys;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.desafio.gerenciadordeconta.fragments.LoginFragment;
 import com.desafio.gerenciadordeconta.models.ContaCorrente;
@@ -77,4 +80,17 @@ public class LoginActivity extends ActionBarActivity {
 	@Override
 	public void onBackPressed() {
 	}
+	
+	protected void onPause() {
+        super.onPause();
+        dismissKeyboard();
+    }
+	
+	private void dismissKeyboard() {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        View viewCurrentFocus = getCurrentFocus();
+        if (viewCurrentFocus != null) {
+            inputMethodManager.hideSoftInputFromWindow(viewCurrentFocus.getWindowToken(), 0);
+        }
+    }
 }

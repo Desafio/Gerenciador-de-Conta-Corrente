@@ -1,6 +1,7 @@
 package com.desafio.gerenciadordeconta.fragments;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -176,6 +178,7 @@ public class NavigationDrawerFragment extends Fragment {
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
+                dismissKeyboard();
                 if (!isAdded()) {
                     return;
                 }
@@ -186,6 +189,7 @@ public class NavigationDrawerFragment extends Fragment {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
+                dismissKeyboard();
                 if (!isAdded()) {
                     return;
                 }
@@ -305,5 +309,13 @@ public class NavigationDrawerFragment extends Fragment {
          * Called when an item in the navigation drawer is selected.
          */
         void onNavigationDrawerItemSelected(int position);
+    }
+    
+    private void dismissKeyboard() {
+        InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        View viewCurrentFocus = getActivity().getCurrentFocus();
+        if (viewCurrentFocus != null) {
+            inputMethodManager.hideSoftInputFromWindow(viewCurrentFocus.getWindowToken(), 0);
+        }
     }
 }
