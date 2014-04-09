@@ -151,4 +151,7 @@ public class HomeActivity extends ActionBarActivity implements
 		return super.onOptionsItemSelected(item);
 	}
 
+	@Override
+	public void onBackPressed() {
+	}
 }

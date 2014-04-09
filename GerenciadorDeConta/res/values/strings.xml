@@ -18,5 +18,7 @@
     <string name="login_conta_corrente">Conta Corrente:</string>
     <string name="login_senha">Senha:</string>
     <string name="login_entrar">Entrar</string>
+    <string name="sair_mensagem">Deseja sair?</string>
+    <string name="sair_confirmar">Sim (Sair)</string>
 
 </resources>
