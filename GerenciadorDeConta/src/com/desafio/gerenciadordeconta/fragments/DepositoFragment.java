@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.activeandroid.query.Select;
 import com.desafio.gerenciadordeconta.models.ContaCorrente;
 import com.desafio.gerenciadordeconta.models.Transferencia;
 import com.example.gerenciadordeconta.R;
@@ -28,7 +29,12 @@ public class DepositoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_deposito, container, false);
-        contaCorrente = (ContaCorrente) getActivity().getIntent().getSerializableExtra("conta");
+        
+        String idConta = getActivity().getIntent().getStringExtra("idConta");
+        
+        contaCorrente = new Select()
+		.from(ContaCorrente.class)
+		.where("id = ?", idConta).executeSingle();
         
         final EditText loginSenha = (EditText) rootView
 				.findViewById(R.id.deposito_valor);
@@ -45,6 +51,7 @@ public class DepositoFragment extends Fragment {
 				}
 				
 				contaCorrente.setSaldo(contaCorrente.getSaldo() + Float.valueOf(valor));
+				contaCorrente.save();
 				
 				Calendar currentDate = Calendar.getInstance();
 				Transferencia transferencia = new Transferencia();

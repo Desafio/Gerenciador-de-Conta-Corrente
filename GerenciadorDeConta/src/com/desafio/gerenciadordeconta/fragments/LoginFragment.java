@@ -49,11 +49,9 @@ public class LoginFragment extends Fragment {
 					Toast.makeText(getActivity(), "Conta ou Senha inv‡lida.", Toast.LENGTH_LONG).show();
 					return;
 				}
-				Bundle extras = new Bundle();
 				
-				Intent intent = new Intent(getActivity(), HomeActivity.class);				
-				extras.putSerializable("conta", list.get(0));
-				intent.putExtras(extras);
+				Intent intent = new Intent(getActivity(), HomeActivity.class);
+				intent.putExtra("idConta", list.get(0).getId().toString());
 				getActivity().startActivity(intent);
 
 			}

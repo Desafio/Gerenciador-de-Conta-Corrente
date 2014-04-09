@@ -18,21 +18,25 @@ import com.desafio.gerenciadordeconta.models.Transferencia;
 import com.example.gerenciadordeconta.R;
 
 public class TransferenciaFragment extends Fragment {
-	
+
 	ContaCorrente contaCorrente = new ContaCorrente();
-	
+
 	public static TransferenciaFragment newInstance() {
 		TransferenciaFragment fragment = new TransferenciaFragment();
-        return fragment;
-    }
-	
+		return fragment;
+	}
+
 	@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_transferencia, container, false);
-        contaCorrente = (ContaCorrente) getActivity().getIntent().getSerializableExtra("conta");
-        
-        final EditText valorET = (EditText) rootView
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View rootView = inflater.inflate(R.layout.fragment_transferencia,
+				container, false);
+		String idConta = getActivity().getIntent().getStringExtra("idConta");
+
+		contaCorrente = new Select().from(ContaCorrente.class)
+				.where("id = ?", idConta).executeSingle();
+
+		final EditText valorET = (EditText) rootView
 				.findViewById(R.id.transferencia_valor);
 		final EditText contaET = (EditText) rootView
 				.findViewById(R.id.transferencia_conta);
@@ -45,42 +49,62 @@ public class TransferenciaFragment extends Fragment {
 				String stringConta = contaET.getText().toString();
 
 				List<ContaCorrente> list = new Select()
-				.from(ContaCorrente.class)
-				.where("conta = ?", stringConta).execute();
-				
-				if(stringConta.equalsIgnoreCase(contaCorrente.getConta()) || list == null || list.size() != 1) {
-					Toast.makeText(getActivity(), "Conta inv‡lida.", Toast.LENGTH_LONG).show();
+						.from(ContaCorrente.class)
+						.where("conta = ?", stringConta).execute();
+
+				if (stringConta.equalsIgnoreCase(contaCorrente.getConta())
+						|| list == null || list.size() != 1) {
+					Toast.makeText(getActivity(), "Conta inv‡lida.",
+							Toast.LENGTH_LONG).show();
 					return;
 				}
-				
-				if(stringValor == null || stringValor.length() == 0 || Integer.parseInt(stringValor) < 0) {
-					Toast.makeText(getActivity(), "Valor inv‡lido.", Toast.LENGTH_LONG).show();
+
+				if (stringValor == null || stringValor.length() == 0
+						|| Integer.parseInt(stringValor) < 0) {
+					Toast.makeText(getActivity(), "Valor inv‡lido.",
+							Toast.LENGTH_LONG).show();
 					return;
 				}
-				
-				if(contaCorrente.getSaldo() < Float.valueOf(stringValor)) {
-					Toast.makeText(getActivity(), "Seu saldo Ž insuficiente para esta transferncia.", Toast.LENGTH_LONG).show();
+
+				if (contaCorrente.getSaldo() < Float.valueOf(stringValor)) {
+					Toast.makeText(
+							getActivity(),
+							"Seu saldo Ž insuficiente para esta transferncia.",
+							Toast.LENGTH_LONG).show();
 					return;
 				}
-				
+
+				ContaCorrente contaCorrenteDeposito = list.get(0);
+
 				Calendar currentDate = Calendar.getInstance();
 				Transferencia transferenciaSaque = new Transferencia();
 				transferenciaSaque.setConta(contaCorrente.getConta());
 				transferenciaSaque.setData(currentDate.getTime());
-				transferenciaSaque.setDescricao("Trans. para " + stringConta);
+				transferenciaSaque.setDescricao("Trans. para "
+						+ contaCorrenteDeposito.getConta());
 				transferenciaSaque.setValor(-Float.valueOf(stringValor));
 				transferenciaSaque.save();
-				
+
 				Transferencia transferenciaDeposito = new Transferencia();
-				transferenciaDeposito.setConta(stringConta);
+				transferenciaDeposito.setConta(contaCorrenteDeposito.getConta());
 				transferenciaDeposito.setData(currentDate.getTime());
-				transferenciaDeposito.setDescricao("Trans. de " + contaCorrente.getConta());
+				transferenciaDeposito.setDescricao("Trans. de "
+						+ contaCorrente.getConta());
 				transferenciaDeposito.setValor(Float.valueOf(stringValor));
 				transferenciaDeposito.save();
-				
-				Toast.makeText(getActivity(), "Transferncia realizado com sucesso.", Toast.LENGTH_LONG).show();
+
+				contaCorrente.setSaldo(contaCorrente.getSaldo()
+						- Float.valueOf(stringValor));
+				contaCorrente.save();
+				contaCorrenteDeposito.setSaldo(contaCorrenteDeposito.getSaldo()
+						+ Float.valueOf(stringValor));
+				contaCorrenteDeposito.save();
+
+				Toast.makeText(getActivity(),
+						"Transferncia realizado com sucesso.",
+						Toast.LENGTH_LONG).show();
 			}
 		});
-        return rootView;
+		return rootView;
 	}
 }

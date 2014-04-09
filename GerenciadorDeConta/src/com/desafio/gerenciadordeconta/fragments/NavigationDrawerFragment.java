@@ -21,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.activeandroid.query.Select;
 import com.desafio.gerenciadordeconta.models.ContaCorrente;
 import com.example.gerenciadordeconta.R;
 
@@ -99,7 +100,12 @@ public class NavigationDrawerFragment extends Fragment {
                 selectItem(position);
             }
         });
-        ContaCorrente contaCorrente = (ContaCorrente) getActivity().getIntent().getSerializableExtra("conta");
+        
+        String idConta = getActivity().getIntent().getStringExtra("idConta");
+        
+        ContaCorrente contaCorrente = new Select()
+		.from(ContaCorrente.class)
+		.where("id = ?", idConta).executeSingle();
         
         String[] menuString = {};
         

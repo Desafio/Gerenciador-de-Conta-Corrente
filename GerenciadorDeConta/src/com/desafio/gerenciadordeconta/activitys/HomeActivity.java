@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.activeandroid.query.Select;
 import com.desafio.gerenciadordeconta.fragments.DepositoFragment;
 import com.desafio.gerenciadordeconta.fragments.ExtratoFragment;
 import com.desafio.gerenciadordeconta.fragments.GerenteFragment;
@@ -41,7 +42,11 @@ public class HomeActivity extends ActionBarActivity implements
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
 				(DrawerLayout) findViewById(R.id.drawer_layout));
 
-		contaCorrente = (ContaCorrente) getIntent().getSerializableExtra("conta");
+		String idConta = getIntent().getStringExtra("idConta");
+        
+        contaCorrente = new Select()
+		.from(ContaCorrente.class)
+		.where("id = ?", idConta).executeSingle();
 	}
 
 	@Override
