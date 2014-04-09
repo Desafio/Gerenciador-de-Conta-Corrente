@@ -16,6 +16,7 @@ import com.desafio.gerenciadordeconta.fragments.SairFragment;
 import com.desafio.gerenciadordeconta.fragments.SaldoFragment;
 import com.desafio.gerenciadordeconta.fragments.SaqueFragment;
 import com.desafio.gerenciadordeconta.fragments.TransferenciaFragment;
+import com.desafio.gerenciadordeconta.models.ContaCorrente;
 import com.example.gerenciadordeconta.R;
 
 public class HomeActivity extends ActionBarActivity implements
@@ -25,7 +26,7 @@ public class HomeActivity extends ActionBarActivity implements
 
 	private CharSequence mTitle;
 
-	String conta = "";
+	ContaCorrente contaCorrente;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +41,7 @@ public class HomeActivity extends ActionBarActivity implements
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
 				(DrawerLayout) findViewById(R.id.drawer_layout));
 
-		conta = getIntent().getStringExtra("conta");
-
+		contaCorrente = (ContaCorrente) getIntent().getSerializableExtra("conta");
 	}
 
 	@Override
@@ -86,6 +86,7 @@ public class HomeActivity extends ActionBarActivity implements
 					.commit();
 			break;
 		}
+		onSectionAttached(position);
 	}
 
 	public void onSectionAttached(int number) {

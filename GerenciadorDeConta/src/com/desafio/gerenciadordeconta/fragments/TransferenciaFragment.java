@@ -7,11 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.desafio.gerenciadordeconta.models.ContaCorrente;
 import com.example.gerenciadordeconta.R;
 
 public class TransferenciaFragment extends Fragment {
 	
-	String conta = "";
+	ContaCorrente contaCorrente = new ContaCorrente();
 	
 	public static TransferenciaFragment newInstance() {
 		TransferenciaFragment fragment = new TransferenciaFragment();
@@ -22,10 +23,10 @@ public class TransferenciaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_transferencia, container, false);
-        conta = getActivity().getIntent().getStringExtra("conta");
+        contaCorrente = (ContaCorrente) getActivity().getIntent().getSerializableExtra("conta");
         
         TextView text = (TextView) rootView.findViewById(R.id.section_label);
-        text.setText(conta + " - Transferência");
+        text.setText(contaCorrente.getConta() + " - Transferência");
         return rootView;
 	}
 }

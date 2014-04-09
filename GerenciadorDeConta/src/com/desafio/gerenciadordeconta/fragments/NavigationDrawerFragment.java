@@ -21,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.desafio.gerenciadordeconta.models.ContaCorrente;
 import com.example.gerenciadordeconta.R;
 
 /**
@@ -98,19 +99,39 @@ public class NavigationDrawerFragment extends Fragment {
                 selectItem(position);
             }
         });
+        ContaCorrente contaCorrente = (ContaCorrente) getActivity().getIntent().getSerializableExtra("conta");
+        
+        String[] menuString = {};
+        
+        if(contaCorrente.getVIP()) {
+        	menuString = new String[]{
+                    getString(R.string.title_saldo),
+                    getString(R.string.title_extrato),
+                    getString(R.string.title_saque),
+                    getString(R.string.title_deposito),
+                    getString(R.string.title_transferencia),
+                    getString(R.string.title_gerente),
+                    getString(R.string.title_sair),
+        	};
+        }
+        
+        if(!contaCorrente.getVIP()) {
+        	menuString = new String[]{
+                    getString(R.string.title_saldo),
+                    getString(R.string.title_extrato),
+                    getString(R.string.title_saque),
+                    getString(R.string.title_deposito),
+                    getString(R.string.title_transferencia),
+                    getString(R.string.title_sair),
+        	};
+        }
+        
+        
         mDrawerListView.setAdapter(new ArrayAdapter<String>(
                 getActionBar().getThemedContext(),
                 android.R.layout.simple_list_item_1,
                 android.R.id.text1,
-                new String[]{
-                        getString(R.string.title_saldo),
-                        getString(R.string.title_extrato),
-                        getString(R.string.title_saque),
-                        getString(R.string.title_deposito),
-                        getString(R.string.title_transferencia),
-                        getString(R.string.title_gerente),
-                        getString(R.string.title_sair),
-                }));
+                menuString));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
     }
