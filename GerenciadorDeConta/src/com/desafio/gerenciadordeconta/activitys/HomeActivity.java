@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.desafio.gerenciadordeconta.fragments.ExtratoFragment;
 import com.desafio.gerenciadordeconta.fragments.HomeFragment;
 import com.desafio.gerenciadordeconta.fragments.NavigationDrawerFragment;
 import com.desafio.gerenciadordeconta.fragments.SaldoFragment;
@@ -49,6 +50,11 @@ public class HomeActivity extends ActionBarActivity implements
 		case 1:
 			fragmentManager.beginTransaction()
 					.replace(R.id.container, SaldoFragment.newInstance())
+					.commit();
+			break;
+		case 2:
+			fragmentManager.beginTransaction()
+					.replace(R.id.container, ExtratoFragment.newInstance())
 					.commit();
 			break;
 		case 3:
