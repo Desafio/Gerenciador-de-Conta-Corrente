@@ -76,6 +76,12 @@ public class HomeActivity extends ActionBarActivity implements
 					.commit();
 			break;
 		case 6:
+			if(!contaCorrente.getVIP()) {
+				fragmentManager.beginTransaction()
+				.replace(R.id.container, SairFragment.newInstance())
+				.commit();
+				break;
+			}
 			fragmentManager.beginTransaction()
 					.replace(R.id.container, GerenteFragment.newInstance())
 					.commit();
@@ -107,6 +113,10 @@ public class HomeActivity extends ActionBarActivity implements
 			mTitle = getString(R.string.title_transferencia);
 			break;
 		case 6:
+			if(!contaCorrente.getVIP()) {
+				mTitle = getString(R.string.title_sair);
+				break;
+			}
 			mTitle = getString(R.string.title_gerente);
 			break;
 		case 7:
