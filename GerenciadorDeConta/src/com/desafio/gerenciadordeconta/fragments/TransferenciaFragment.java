@@ -73,8 +73,27 @@ public class TransferenciaFragment extends Fragment {
 							Toast.LENGTH_LONG).show();
 					return;
 				}
+				
+				if (!contaCorrente.getVIP() && Float.valueOf(stringValor) > 1000.0F) {
+					Toast.makeText(
+							getActivity(),
+							"Você ultrapassou o limite para transferência.",
+							Toast.LENGTH_LONG).show();
+					return;
+				}
 
 				ContaCorrente contaCorrenteDeposito = list.get(0);
+				double valorDebitado = contaCorrente.getVIP() ? Double.valueOf(stringValor) * 1.08 : Double.valueOf(stringValor) + 8.0;
+				
+				contaCorrente.setSaldo(contaCorrente.getSaldo()
+						- Float.valueOf(Double.toString(valorDebitado)));
+				contaCorrente.save();
+				contaCorrenteDeposito.setSaldo(contaCorrenteDeposito.getSaldo()
+						+ Float.valueOf(stringValor));
+				contaCorrenteDeposito.save();
+				
+				
+				
 
 				Calendar currentDate = Calendar.getInstance();
 				Transferencia transferenciaSaque = new Transferencia();
@@ -82,7 +101,7 @@ public class TransferenciaFragment extends Fragment {
 				transferenciaSaque.setData(currentDate.getTime());
 				transferenciaSaque.setDescricao("Trans. para "
 						+ contaCorrenteDeposito.getConta());
-				transferenciaSaque.setValor(-Float.valueOf(stringValor));
+				transferenciaSaque.setValor(-Float.valueOf(Double.toString(valorDebitado)));
 				transferenciaSaque.save();
 
 				Transferencia transferenciaDeposito = new Transferencia();
@@ -92,13 +111,6 @@ public class TransferenciaFragment extends Fragment {
 						+ contaCorrente.getConta());
 				transferenciaDeposito.setValor(Float.valueOf(stringValor));
 				transferenciaDeposito.save();
-
-				contaCorrente.setSaldo(contaCorrente.getSaldo()
-						- Float.valueOf(stringValor));
-				contaCorrente.save();
-				contaCorrenteDeposito.setSaldo(contaCorrenteDeposito.getSaldo()
-						+ Float.valueOf(stringValor));
-				contaCorrenteDeposito.save();
 
 				Toast.makeText(getActivity(),
 						"Transferência realizado com sucesso.",
