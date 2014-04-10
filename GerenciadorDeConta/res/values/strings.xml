@@ -31,5 +31,12 @@
     <string name="transferencia_conta">Conta para transferir:</string>
     <string name="transferencia_confirmar">Transferir</string>
     <string name="title_activity_help">HelpActivity</string>
+    
+    <string name="help_mensagem">Três contas foram criadas:</string>
+    <string name="help_conta1">Conta corrente:11111 Senha:1111</string>
+    <string name="help_conta2">Conta corrente:22222 Senha:2222</string>
+    <string name="help_conta3">Conta corrente:33333 Senha:3333</string>
+    <string name="help_contas_saldo">Com o saldo inicial de 1000, 500 e 100 respectivamente.</string>
+    <string name="help_contas_vip">Apenas a conta 1 e 3 são VIPs.</string>
 
 </resources>

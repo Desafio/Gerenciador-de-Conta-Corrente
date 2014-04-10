@@ -2,7 +2,6 @@ INDEX VERSION 1.126+C:\Users\David\Documents\GitHub\Gerenciador-de-Conta-Corrent
 1781811831.index
 3251637195.index
 1408918789.index
-1403366445.index
 1284074322.index
 3918566289.index
 401092564.index
