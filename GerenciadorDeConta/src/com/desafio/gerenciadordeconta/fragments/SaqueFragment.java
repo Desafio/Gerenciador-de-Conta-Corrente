@@ -44,14 +44,14 @@ public class SaqueFragment extends Fragment {
 				String valor = loginSenha.getText().toString();
 
 				if (valor.length() == 0 || Float.valueOf(valor) <= 0) {
-					Toast.makeText(getActivity(), "Valor inv‡lido",
+					Toast.makeText(getActivity(), "Valor inválido",
 							Toast.LENGTH_LONG).show();
 					return;
 				}
 
-				if (contaCorrente.getSaldo() < Float.valueOf(valor)) {
+				if (!contaCorrente.getVIP() && contaCorrente.getSaldo() < Float.valueOf(valor)) {
 					Toast.makeText(getActivity(),
-							"Seu saldo Ž insuficiente para este saque.",
+							"Seu saldo é insuficiente para este saque.",
 							Toast.LENGTH_LONG).show();
 					return;
 				}

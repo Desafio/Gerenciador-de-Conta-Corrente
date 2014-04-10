@@ -1,5 +1,8 @@
 package com.desafio.gerenciadordeconta.activitys;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -42,11 +45,9 @@ public class HomeActivity extends ActionBarActivity implements
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
 				(DrawerLayout) findViewById(R.id.drawer_layout));
 
-		String idConta = getIntent().getStringExtra("idConta");
-        
-        contaCorrente = new Select()
-		.from(ContaCorrente.class)
-		.where("id = ?", idConta).executeSingle();
+		MyTimerTask myTask = new MyTimerTask();
+		Timer myTimer = new Timer();
+		myTimer.schedule(myTask, 0, 60000);
 	}
 
 	@Override
@@ -76,15 +77,16 @@ public class HomeActivity extends ActionBarActivity implements
 					.commit();
 			break;
 		case 5:
-			fragmentManager.beginTransaction()
-					.replace(R.id.container, TransferenciaFragment.newInstance())
-					.commit();
+			fragmentManager
+					.beginTransaction()
+					.replace(R.id.container,
+							TransferenciaFragment.newInstance()).commit();
 			break;
 		case 6:
-			if(!contaCorrente.getVIP()) {
+			if (!contaCorrente.getVIP()) {
 				fragmentManager.beginTransaction()
-				.replace(R.id.container, SairFragment.newInstance())
-				.commit();
+						.replace(R.id.container, SairFragment.newInstance())
+						.commit();
 				break;
 			}
 			fragmentManager.beginTransaction()
@@ -118,7 +120,7 @@ public class HomeActivity extends ActionBarActivity implements
 			mTitle = getString(R.string.title_transferencia);
 			break;
 		case 6:
-			if(!contaCorrente.getVIP()) {
+			if (!contaCorrente.getVIP()) {
 				mTitle = getString(R.string.title_sair);
 				break;
 			}
@@ -159,6 +161,21 @@ public class HomeActivity extends ActionBarActivity implements
 	@Override
 	public void onBackPressed() {
 	}
-	
-	
+
+	class MyTimerTask extends TimerTask {
+		public void run() {
+			String idConta = getIntent().getStringExtra("idConta");
+
+			contaCorrente = new Select().from(ContaCorrente.class)
+					.where("id = ?", idConta).executeSingle();
+			
+			if (contaCorrente.getSaldo() < 0) {
+				double novoSaldo = contaCorrente.getSaldo() * 1.01;
+				contaCorrente
+						.setSaldo(Float.valueOf(Double.toString(novoSaldo)));
+				contaCorrente.save();
+				
+			}
+		}
+	}
 }
