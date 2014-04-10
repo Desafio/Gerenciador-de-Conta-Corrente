@@ -12,7 +12,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_help">Ajuda</string>
     <string name="title_activity_login">Login</string>
     <string name="hello_world">Hello world!</string>
     <string name="login_conta_corrente">Conta Corrente:</string>
@@ -30,5 +30,6 @@
     <string name="transferencia_valor">Valor da transferência:</string>
     <string name="transferencia_conta">Conta para transferir:</string>
     <string name="transferencia_confirmar">Transferir</string>
+    <string name="title_activity_help">HelpActivity</string>
 
 </resources>

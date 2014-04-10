@@ -3,6 +3,7 @@ package com.desafio.gerenciadordeconta.activitys;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -152,7 +153,9 @@ public class HomeActivity extends ActionBarActivity implements
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_help) {
+			Intent intent = new Intent(this, HelpActivity.class);
+			this.startActivity(intent);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

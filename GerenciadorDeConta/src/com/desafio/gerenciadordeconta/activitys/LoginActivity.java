@@ -1,6 +1,7 @@
 package com.desafio.gerenciadordeconta.activitys;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -71,7 +72,9 @@ public class LoginActivity extends ActionBarActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_help) {
+			Intent intent = new Intent(this, HelpActivity.class);
+			this.startActivity(intent);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
