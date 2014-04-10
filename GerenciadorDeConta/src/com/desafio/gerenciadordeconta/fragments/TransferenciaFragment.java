@@ -54,22 +54,24 @@ public class TransferenciaFragment extends Fragment {
 
 				if (stringConta.equalsIgnoreCase(contaCorrente.getConta())
 						|| list == null || list.size() != 1) {
-					Toast.makeText(getActivity(), "Conta inválida.",
+					Toast.makeText(getActivity(), "Conta inv‚Ä°lida.",
 							Toast.LENGTH_LONG).show();
 					return;
 				}
 
 				if (stringValor == null || stringValor.length() == 0
 						|| Integer.parseInt(stringValor) < 0) {
-					Toast.makeText(getActivity(), "Valor inválido.",
+					Toast.makeText(getActivity(), "Valor inv‚Ä°lido.",
 							Toast.LENGTH_LONG).show();
 					return;
 				}
+				
+				double valorDebitado = contaCorrente.getVIP() ? Double.valueOf(stringValor) * 1.08 : Double.valueOf(stringValor) + 8.0;
 
-				if (contaCorrente.getSaldo() < Float.valueOf(stringValor)) {
+				if (contaCorrente.getSaldo() < valorDebitado) {
 					Toast.makeText(
 							getActivity(),
-							"Seu saldo é insuficiente para esta transferência.",
+							"Seu saldo ≈Ω insuficiente para esta transferÔøΩncia.",
 							Toast.LENGTH_LONG).show();
 					return;
 				}
@@ -77,13 +79,12 @@ public class TransferenciaFragment extends Fragment {
 				if (!contaCorrente.getVIP() && Float.valueOf(stringValor) > 1000.0F) {
 					Toast.makeText(
 							getActivity(),
-							"Você ultrapassou o limite para transferência.",
+							"VocÔøΩ ultrapassou o limite para transferÔøΩncia.",
 							Toast.LENGTH_LONG).show();
 					return;
 				}
 
 				ContaCorrente contaCorrenteDeposito = list.get(0);
-				double valorDebitado = contaCorrente.getVIP() ? Double.valueOf(stringValor) * 1.08 : Double.valueOf(stringValor) + 8.0;
 				
 				contaCorrente.setSaldo(contaCorrente.getSaldo()
 						- Float.valueOf(Double.toString(valorDebitado)));
@@ -113,7 +114,7 @@ public class TransferenciaFragment extends Fragment {
 				transferenciaDeposito.save();
 
 				Toast.makeText(getActivity(),
-						"Transferência realizado com sucesso.",
+						"TransferÔøΩncia realizado com sucesso.",
 						Toast.LENGTH_LONG).show();
 			}
 		});
