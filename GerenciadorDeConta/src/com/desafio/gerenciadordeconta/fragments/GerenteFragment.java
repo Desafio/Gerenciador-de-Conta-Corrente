@@ -40,22 +40,27 @@ public class GerenteFragment extends Fragment {
 
 				if (contaCorrente.getSaldo() < 50.0F) {
 					Toast.makeText(getActivity(),
-							"Seu saldo Ž insuficiente para esta a‹o.",
+							"Seu saldo Ã© insuficiente para esta aÃ§Ã£o.",
 							Toast.LENGTH_LONG).show();
 					return;
 				}
 
-				Calendar currentDate = Calendar.getInstance();
-				Transferencia transferencia = new Transferencia();
-				transferencia.setConta(contaCorrente.getConta());
-				transferencia.setData(currentDate.getTime());
-				transferencia.setDescricao("Visita Gerente");
-				transferencia.setValor(-50.00F);
-				transferencia.save();
+				salvarTransferencia();
+				
 				Toast.makeText(getActivity(), "Agendamento feito com sucesso.",
 						Toast.LENGTH_LONG).show();
 			}
 		});
 		return rootView;
+	}
+	
+	private void salvarTransferencia() {
+		Calendar currentDate = Calendar.getInstance();
+		Transferencia transferencia = new Transferencia();
+		transferencia.setConta(contaCorrente.getConta());
+		transferencia.setData(currentDate.getTime());
+		transferencia.setDescricao("Visita Gerente");
+		transferencia.setValor(-50.00F);
+		transferencia.save();
 	}
 }
