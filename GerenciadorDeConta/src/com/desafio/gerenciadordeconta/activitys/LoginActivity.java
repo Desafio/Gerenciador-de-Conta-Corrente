@@ -36,26 +36,7 @@ public class LoginActivity extends ActionBarActivity {
 		SharedPreferences sharedPreferences = getSharedPreferences("Preference", MODE_PRIVATE);
 		if (sharedPreferences.getBoolean(
 				"keyConta", true)) {
-			ContaCorrente contaCorrente1 = new ContaCorrente();
-			contaCorrente1.setConta("11111");
-			contaCorrente1.setSenha("1111");
-			contaCorrente1.setVIP(true);
-			contaCorrente1.setSaldo(1000.0F);
-			contaCorrente1.save();
-			
-			ContaCorrente contaCorrente2 = new ContaCorrente();
-			contaCorrente2.setConta("22222");
-			contaCorrente2.setSenha("2222");
-			contaCorrente2.setVIP(false);
-			contaCorrente2.setSaldo(500.0F);
-			contaCorrente2.save();
-			
-			ContaCorrente contaCorrente3 = new ContaCorrente();
-			contaCorrente3.setConta("33333");
-			contaCorrente3.setSenha("3333");
-			contaCorrente3.setVIP(true);
-			contaCorrente1.setSaldo(100.0F);
-			contaCorrente3.save();
+			createContas();
 		}
 		
 		SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -87,6 +68,29 @@ public class LoginActivity extends ActionBarActivity {
 	protected void onPause() {
         super.onPause();
         dismissKeyboard();
+    }
+	
+	protected void createContas() {
+		ContaCorrente contaCorrente1 = new ContaCorrente();
+		contaCorrente1.setConta("11111");
+		contaCorrente1.setSenha("1111");
+		contaCorrente1.setVIP(true);
+		contaCorrente1.setSaldo(1000.0F);
+		contaCorrente1.save();
+		
+		ContaCorrente contaCorrente2 = new ContaCorrente();
+		contaCorrente2.setConta("22222");
+		contaCorrente2.setSenha("2222");
+		contaCorrente2.setVIP(false);
+		contaCorrente2.setSaldo(500.0F);
+		contaCorrente2.save();
+		
+		ContaCorrente contaCorrente3 = new ContaCorrente();
+		contaCorrente3.setConta("33333");
+		contaCorrente3.setSenha("3333");
+		contaCorrente3.setVIP(true);
+		contaCorrente1.setSaldo(100.0F);
+		contaCorrente3.save();
     }
 	
 	private void dismissKeyboard() {
