@@ -1,6 +1,5 @@
 package com.desafio.gerenciadordeconta.fragments;
 
-import java.util.Calendar;
 import java.util.List;
 
 import android.os.Bundle;
@@ -65,8 +64,10 @@ public class TransferenciaFragment extends Fragment {
 							Toast.LENGTH_LONG).show();
 					return;
 				}
-				
-				double valorDebitado = contaCorrente.getVIP() ? Double.valueOf(stringValor) * 1.08 : Double.valueOf(stringValor) + 8.0;
+
+				double valorDebitado = contaCorrente.getVIP() ? Double
+						.valueOf(stringValor) * 1.08 : Double
+						.valueOf(stringValor) + 8.0;
 
 				if (contaCorrente.getSaldo() < valorDebitado) {
 					Toast.makeText(
@@ -75,42 +76,34 @@ public class TransferenciaFragment extends Fragment {
 							Toast.LENGTH_LONG).show();
 					return;
 				}
-				
-				if (!contaCorrente.getVIP() && Float.valueOf(stringValor) > 1000.0F) {
-					Toast.makeText(
-							getActivity(),
+
+				if (!contaCorrente.getVIP()
+						&& Float.valueOf(stringValor) > 1000.0F) {
+					Toast.makeText(getActivity(),
 							"Voc� ultrapassou o limite para transfer�ncia.",
 							Toast.LENGTH_LONG).show();
 					return;
 				}
 
 				ContaCorrente contaCorrenteDeposito = list.get(0);
-				
+
 				contaCorrente.setSaldo(contaCorrente.getSaldo()
 						- Float.valueOf(Double.toString(valorDebitado)));
 				contaCorrente.save();
 				contaCorrenteDeposito.setSaldo(contaCorrenteDeposito.getSaldo()
 						+ Float.valueOf(stringValor));
 				contaCorrenteDeposito.save();
-				
-				
-				
 
-				Calendar currentDate = Calendar.getInstance();
-				Transferencia transferenciaSaque = new Transferencia();
-				transferenciaSaque.setConta(contaCorrente.getConta());
-				transferenciaSaque.setData(currentDate.getTime());
-				transferenciaSaque.setDescricao("Trans. para "
-						+ contaCorrenteDeposito.getConta());
-				transferenciaSaque.setValor(-Float.valueOf(Double.toString(valorDebitado)));
+				Transferencia transferenciaSaque = new Transferencia(
+						contaCorrente.getConta(), "Trans. para "
+								+ contaCorrenteDeposito.getConta(), -Float
+								.valueOf(Double.toString(valorDebitado)));
 				transferenciaSaque.save();
 
-				Transferencia transferenciaDeposito = new Transferencia();
-				transferenciaDeposito.setConta(contaCorrenteDeposito.getConta());
-				transferenciaDeposito.setData(currentDate.getTime());
-				transferenciaDeposito.setDescricao("Trans. de "
-						+ contaCorrente.getConta());
-				transferenciaDeposito.setValor(Float.valueOf(stringValor));
+				Transferencia transferenciaDeposito = new Transferencia(
+						contaCorrenteDeposito.getConta(), "Trans. de "
+								+ contaCorrente.getConta(), Float
+								.valueOf(stringValor));
 				transferenciaDeposito.save();
 
 				Toast.makeText(getActivity(),

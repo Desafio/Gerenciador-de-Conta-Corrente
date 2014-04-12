@@ -1,7 +1,5 @@
 package com.desafio.gerenciadordeconta.fragments;
 
-import java.util.Calendar;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -60,12 +58,8 @@ public class SaqueFragment extends Fragment {
 						- Float.valueOf(valor));
 				contaCorrente.save();
 
-				Calendar currentDate = Calendar.getInstance();
-				Transferencia transferencia = new Transferencia();
-				transferencia.setConta(contaCorrente.getConta());
-				transferencia.setData(currentDate.getTime());
-				transferencia.setDescricao("Saque");
-				transferencia.setValor(-Float.valueOf(valor));
+				Transferencia transferencia = new Transferencia(contaCorrente
+						.getConta(), "Saque", -Float.valueOf(valor));
 				transferencia.save();
 
 				Toast.makeText(getActivity(), "Saque realizado com sucesso.",

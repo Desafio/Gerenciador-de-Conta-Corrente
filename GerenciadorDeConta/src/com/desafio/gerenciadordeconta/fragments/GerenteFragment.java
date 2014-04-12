@@ -1,7 +1,5 @@
 package com.desafio.gerenciadordeconta.fragments;
 
-import java.util.Calendar;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -45,22 +43,14 @@ public class GerenteFragment extends Fragment {
 					return;
 				}
 
-				salvarTransferencia();
+				Transferencia transferencia = new Transferencia(contaCorrente
+						.getConta(), "Visita Gerente", -50.00F);
+				transferencia.save();
 				
 				Toast.makeText(getActivity(), "Agendamento feito com sucesso.",
 						Toast.LENGTH_LONG).show();
 			}
 		});
 		return rootView;
-	}
-	
-	private void salvarTransferencia() {
-		Calendar currentDate = Calendar.getInstance();
-		Transferencia transferencia = new Transferencia();
-		transferencia.setConta(contaCorrente.getConta());
-		transferencia.setData(currentDate.getTime());
-		transferencia.setDescricao("Visita Gerente");
-		transferencia.setValor(-50.00F);
-		transferencia.save();
 	}
 }

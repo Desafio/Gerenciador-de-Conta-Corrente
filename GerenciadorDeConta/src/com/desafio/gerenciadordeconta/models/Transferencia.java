@@ -1,6 +1,7 @@
 package com.desafio.gerenciadordeconta.models;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import com.activeandroid.Model;
@@ -23,6 +24,14 @@ public class Transferencia extends Model {
 	private String descricao;
 	
 	public Transferencia(){
+	}
+	
+	public Transferencia(String conta, String descricao, float valor){
+		Calendar currentDate = Calendar.getInstance();
+		this.setConta(conta);
+		this.setData(currentDate.getTime());
+		this.setDescricao(descricao);
+		this.setValor(valor);
 	}
 	
 	public void setData(Date data) {
