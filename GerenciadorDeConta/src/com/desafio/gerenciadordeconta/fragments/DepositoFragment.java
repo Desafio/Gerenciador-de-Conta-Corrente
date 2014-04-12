@@ -46,24 +46,28 @@ public class DepositoFragment extends Fragment {
 				String valor = loginSenha.getText().toString();
 				
 				if(valor.length() == 0 || Float.valueOf(valor) <= 0) {
-					Toast.makeText(getActivity(), "Valor inv‡lido", Toast.LENGTH_LONG).show();
+					Toast.makeText(getActivity(), "Valor inválido", Toast.LENGTH_LONG).show();
 					return;
 				}
 				
 				contaCorrente.setSaldo(contaCorrente.getSaldo() + Float.valueOf(valor));
 				contaCorrente.save();
 				
-				Calendar currentDate = Calendar.getInstance();
-				Transferencia transferencia = new Transferencia();
-				transferencia.setConta(contaCorrente.getConta());
-				transferencia.setData(currentDate.getTime());
-				transferencia.setDescricao("Deposito");
-				transferencia.setValor(Float.valueOf(valor));
-				transferencia.save();
+				salvarTransferencia(Float.valueOf(valor));
 				
 				Toast.makeText(getActivity(), "Deposito realizado com sucesso.", Toast.LENGTH_LONG).show();
 			}
 		});
         return rootView;
+	}
+	
+	private void salvarTransferencia(float valor) {
+		Calendar currentDate = Calendar.getInstance();
+		Transferencia transferencia = new Transferencia();
+		transferencia.setConta(contaCorrente.getConta());
+		transferencia.setData(currentDate.getTime());
+		transferencia.setDescricao("Deposito");
+		transferencia.setValor(valor);
+		transferencia.save();
 	}
 }
